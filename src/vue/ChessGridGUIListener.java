@@ -15,6 +15,8 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import tools.data.Coord;
+import tools.data.Couleur;
 
 /**
  *
@@ -34,24 +36,30 @@ public class ChessGridGUIListener implements MouseListener,MouseMotionListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
         chessPiece = null;
         Component c =  chessGridGUI.findComponentAt(e.getX(), e.getY());
-        
-        if (c instanceof JPanel) 
-        return;
-        
-        Point parentLocation = c.getParent().getLocation();
-        xAdjustment = parentLocation.x - e.getX();
-        yAdjustment = parentLocation.y - e.getY();
-        chessPiece = (JLabel)c;
-        chessPiece.setLocation(e.getX() + xAdjustment, e.getY() + yAdjustment);
-        chessPiece.setSize(chessPiece.getWidth(), chessPiece.getHeight());
-        chessGridGUI.add(chessPiece, JLayeredPane.DRAG_LAYER);
+        Coord coord = chessGridGUI.getSquareCoord(e.getX(),e.getY());
+        Couleur color = chessGridGUI.getSquareColor(coord);
+        if(!chessGameControler.isPlayerOk(color)){
+            return;
+        }
+        else{
+            if (c instanceof JPanel) 
+            return;
+
+            Point parentLocation = c.getParent().getLocation();
+            xAdjustment = parentLocation.x - e.getX();
+            yAdjustment = parentLocation.y - e.getY();
+            chessPiece = (JLabel)c;
+            chessPiece.setLocation(e.getX() + xAdjustment, e.getY() + yAdjustment);
+            chessPiece.setSize(chessPiece.getWidth(), chessPiece.getHeight());
+            chessGridGUI.add(chessPiece, JLayeredPane.DRAG_LAYER);
+        }
     }
 
     @Override
