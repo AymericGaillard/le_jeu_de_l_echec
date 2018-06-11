@@ -6,6 +6,7 @@
 package model;
 
 import java.util.List;
+import tools.BoardGameConfig;
 import tools.data.ActionType;
 import tools.data.Coord;
 import tools.data.Couleur;
@@ -16,13 +17,16 @@ import tools.data.Couleur;
  */
 public class ChessModel implements ChessGameModel {
 
+    private Couleur colorCurrentPlayer;
+
     public ChessModel() {
         //todo
+        this.colorCurrentPlayer = BoardGameConfig.getBeginColor();
     }
-
+    
     @Override
     public Couleur getColorCurrentPlayer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return colorCurrentPlayer;
     }
 
     @Override

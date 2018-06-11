@@ -6,6 +6,7 @@
 package vue;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -18,6 +19,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import tools.data.ChessPiecePos;
 import tools.data.Coord;
+import tools.data.Couleur;
 import tools.factory.ChessImageProvider;
 
 /**
@@ -26,6 +28,7 @@ import tools.factory.ChessImageProvider;
  */
 public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
     private int length=8;
+    Map map;
     public ChessGridGUI() {
         this.setLayout(new GridLayout(length,length));
         setBackgroundChessBoard();
@@ -34,7 +37,7 @@ public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
     
     private void setBackgroundChessBoard(){
         ChessSquareGUI square = null;
-        Map<Coord, ChessSquareGUI> map = new HashMap<Coord, ChessSquareGUI>();
+        map = new HashMap<Coord, ChessSquareGUI>();
         
         for (int i = 0; i<length; i++){
             for (int j = 0; j<length; j++) {
@@ -73,6 +76,18 @@ public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
             }
         }
     }
+    
+   public Coord getSquareCoord(int x, int y){
+       Component c = this.findComponentAt(x,y);
+       ChessSquareGUI square = (ChessSquareGUI) c;
+       return square.getCoord();
+   }
+   
+   public Couleur getSquareColor(Coord coord){
+       ChessSquareGUI square = (ChessSquareGUI) map.get(coord);
+       ChessPieceGUI piece = (ChessPieceGUI) square.getComponent(0);
+       return piece.getColor();
+   }
   
     
     @Override
