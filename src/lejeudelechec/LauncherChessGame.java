@@ -8,12 +8,12 @@ import java.util.Observer;
 import javax.swing.JFrame;
 
 import model.ChessModelObs;
-import model.business.ChessGameModel;
+import model.ChessGameModel;
 import tools.BoardGameConfig;
 import tools.data.Couleur;
 import vue.ChessGUI;
 import controler.ChessGameControlerModelVue;
-import controler.controlerLocal.ChessControlerLocal;
+import controler.ChessControlerLocal;
 
 
 

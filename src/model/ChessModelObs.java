@@ -4,8 +4,7 @@ package model;
 import java.util.List;
 import java.util.Observable;
 
-import model.business.ChessGameModel;
-import model.business.ChessModel;
+import model.ChessModel;
 import tools.data.ActionType;
 import tools.data.Coord;
 import tools.data.Couleur;

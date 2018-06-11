@@ -4,6 +4,7 @@ package controler;
 import javax.swing.JLayeredPane;
 
 import tools.data.Couleur;
+import vue.ChessGridGUI;
 
 public interface ChessGameControlerModelVue extends ChessGameControlerModel {
 	
@@ -22,4 +23,6 @@ public interface ChessGameControlerModelVue extends ChessGameControlerModel {
 	 * passée en paramètre de jouer, false sinon
 	 */
 	public boolean isPlayerOk(Couleur pieceToMoveCouleur);
+
+    public void setGridPanel(ChessGridGUI chessGridGUI);
 }

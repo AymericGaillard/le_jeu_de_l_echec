@@ -1,4 +1,4 @@
-package model.piece;
+package model;
 
 import java.util.List;
 

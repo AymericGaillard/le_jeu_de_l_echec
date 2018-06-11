@@ -5,7 +5,7 @@ package tools.factory;
 import tools.Introspection;
 import tools.data.Coord;
 import tools.data.Couleur;
-import model.piece.Pieces;
+import model.Pieces;
 
 /**
  * @author francoise.perrin
