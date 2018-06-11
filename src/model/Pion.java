@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.util.List;
+import tools.data.Coord;
+
 /**
  *
  * @author Aymeric
@@ -13,6 +16,17 @@ public class Pion extends AbstractPiece {
 
     public Pion() {
         super();
+        this.name = "Pion";
+    }
+
+    @Override
+    public boolean isAlgoMoveOk(int xFinal, int yFinal) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public List<Coord> getMoveItinerary(int xFinal, int yFinal) {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
     
 }

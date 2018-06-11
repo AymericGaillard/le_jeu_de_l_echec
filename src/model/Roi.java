@@ -5,6 +5,10 @@
  */
 package model;
 
+import static java.lang.Math.abs;
+import java.util.List;
+import tools.data.Coord;
+
 /**
  *
  * @author Aymeric
@@ -13,6 +17,16 @@ public class Roi extends AbstractPiece {
 
     public Roi() {
         super();
+        this.name = "Roi";
     }
-    
+
+    @Override
+    public boolean isAlgoMoveOk(int xFinal, int yFinal) {
+        return abs(this.x - xFinal) <= 1 && abs(this.y - yFinal) <= 1 && (this.x != xFinal || this.y != yFinal);
+    }
+
+    @Override
+    public List<Coord> getMoveItinerary(int xFinal, int yFinal) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
 }
