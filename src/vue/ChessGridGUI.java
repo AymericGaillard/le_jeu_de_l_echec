@@ -79,7 +79,14 @@ public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
     
    public Coord getSquareCoord(int x, int y){
        Component c = this.findComponentAt(x,y);
-       ChessSquareGUI square = (ChessSquareGUI) c;
+       ChessSquareGUI square;
+       System.out.println(c.getClass());
+       if(c.getClass()==ChessPieceGUI.class){
+           square = (ChessSquareGUI) c.getParent();
+       }
+       else{
+           square = (ChessSquareGUI) c;
+       }
        return square.getCoord();
    }
    
