@@ -17,8 +17,10 @@ import vue.ChessGridGUI;
  */
 public class ChessControlerLocal implements ChessGameControlerModelVue{
 
+    private ChessGameModel chessGame;
+    
     public ChessControlerLocal(ChessGameModel chessGame) {
-        //todo
+        this.chessGame = chessGame;
     }
 
     @Override
@@ -28,7 +30,7 @@ public class ChessControlerLocal implements ChessGameControlerModelVue{
 
     @Override
     public boolean isPlayerOk(Couleur pieceToMoveCouleur) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return pieceToMoveCouleur == this.chessGame.getColorCurrentPlayer();
     }
 
     @Override
