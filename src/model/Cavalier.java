@@ -5,6 +5,7 @@
  */
 package model;
 
+import static java.lang.Math.abs;
 import java.util.List;
 import tools.data.Coord;
 
@@ -21,7 +22,9 @@ public class Cavalier extends AbstractPiece {
 
     @Override
     public boolean isAlgoMoveOk(int xFinal, int yFinal) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        boolean horizontal = (abs(this.x-xFinal) == 1 && abs(this.y-yFinal) == 2);
+        boolean vertical = (abs(this.x-xFinal) == 2 && abs(this.y-yFinal) == 1);
+        return super.isAlgoMoveOK(xFinal, yFinal) && (horizontal || vertical);
     }
 
     @Override

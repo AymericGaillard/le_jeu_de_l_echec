@@ -25,7 +25,7 @@ public class Reine extends AbstractPiece {
         boolean horizontal = (this.x == xFinal && this.y != yFinal); 
         boolean vertical = (this.y == yFinal && this.x != xFinal);
         boolean diagonal = (abs(this.y - yFinal) == abs(this.x - xFinal));
-        return horizontal || vertical || diagonal;
+        return super.isAlgoMoveOK(xFinal, yFinal) && (horizontal || vertical || diagonal);
     }
 
     @Override

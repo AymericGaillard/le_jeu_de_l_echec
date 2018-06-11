@@ -21,7 +21,9 @@ public class Tour extends AbstractPiece {
 
     @Override
     public boolean isAlgoMoveOk(int xFinal, int yFinal) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        boolean horizontal = (this.x == xFinal && this.y != yFinal); 
+        boolean vertical = (this.y == yFinal && this.x != xFinal);
+        return super.isAlgoMoveOK(xFinal, yFinal) && (horizontal || vertical);
     }
 
     @Override

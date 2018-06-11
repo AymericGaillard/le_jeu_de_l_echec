@@ -22,7 +22,7 @@ public class Roi extends AbstractPiece {
 
     @Override
     public boolean isAlgoMoveOk(int xFinal, int yFinal) {
-        return abs(this.x - xFinal) <= 1 && abs(this.y - yFinal) <= 1 && (this.x != xFinal || this.y != yFinal);
+        return super.isAlgoMoveOK(xFinal, yFinal) && (abs(this.x - xFinal) <= 1 && abs(this.y - yFinal) <= 1 && (this.x != xFinal || this.y != yFinal));
     }
 
     @Override

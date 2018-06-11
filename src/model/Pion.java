@@ -7,6 +7,7 @@ package model;
 
 import java.util.List;
 import tools.data.Coord;
+import tools.data.Couleur;
 
 /**
  *
@@ -21,7 +22,11 @@ public class Pion extends AbstractPiece {
 
     @Override
     public boolean isAlgoMoveOk(int xFinal, int yFinal) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        if (this.color == Couleur.BLANC && (this.y != yFinal + 1 || (this.y == 1 && this.y != yFinal + 2)))
+            return false;
+        if (this.color == Couleur.NOIR && (this.y != yFinal - 1 || (this.y == 6 && this.y != yFinal - 2)))
+            return false;
+        return super.isAlgoMoveOK(xFinal, yFinal);
     }
 
     @Override
