@@ -16,10 +16,10 @@ import tools.data.Couleur;
  */
 public abstract class AbstractPiece implements Pieces {
 
-    private int x;
-    private int y;
-    private Couleur color;
-    private String name;
+    protected int x;
+    protected int y;
+    protected Couleur color;
+    protected String name;
     
     public AbstractPiece() {
     }
