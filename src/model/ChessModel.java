@@ -18,10 +18,12 @@ import tools.data.Couleur;
 public class ChessModel implements ChessGameModel {
 
     private Couleur colorCurrentPlayer;
+    private ChessImplementor chessImplementor;
 
     public ChessModel() {
         //todo
         this.colorCurrentPlayer = BoardGameConfig.getBeginColor();
+        this.chessImplementor = new ChessImplementor();
     }
     
     @Override

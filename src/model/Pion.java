@@ -19,6 +19,11 @@ public class Pion extends AbstractPiece {
         super();
         this.name = "Pion";
     }
+    
+    public Pion(int x, int y, Couleur color) {
+        super(x, y, color);
+        this.name = "Pion";
+    }
 
     @Override
     public boolean isAlgoMoveOk(int xFinal, int yFinal) {

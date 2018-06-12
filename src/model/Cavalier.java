@@ -8,6 +8,7 @@ package model;
 import static java.lang.Math.abs;
 import java.util.List;
 import tools.data.Coord;
+import tools.data.Couleur;
 
 /**
  *
@@ -17,6 +18,11 @@ public class Cavalier extends AbstractPiece {
 
     public Cavalier() {
         super();
+        this.name = "Cavalier";
+    }
+    
+    public Cavalier(int x, int y, Couleur color) {
+        super(x, y, color);
         this.name = "Cavalier";
     }
 

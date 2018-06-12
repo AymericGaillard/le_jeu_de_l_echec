@@ -7,6 +7,7 @@ package model;
 
 import java.util.List;
 import tools.data.Coord;
+import tools.data.Couleur;
 
 /**
  *
@@ -16,6 +17,11 @@ public class Tour extends AbstractPiece {
 
     public Tour() {
         super();
+        this.name = "Tour";
+    }
+    
+    public Tour(int x, int y, Couleur color) {
+        super(x, y, color);
         this.name = "Tour";
     }
 
