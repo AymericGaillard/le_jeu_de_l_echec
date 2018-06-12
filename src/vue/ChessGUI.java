@@ -17,7 +17,10 @@ import javax.swing.JPanel;
 import tools.data.MessageModelToGUI;
 import controler.ChessGameControlerModelVue;
 
-
+/**
+ * 
+ * @author theot
+ */
 public class ChessGUI extends JFrame implements Observer {
 
 	private ChessGridGUI chessGridGUI ; // le damier est une extension de JLayerdPane

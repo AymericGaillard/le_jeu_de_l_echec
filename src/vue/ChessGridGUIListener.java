@@ -28,6 +28,8 @@ public class ChessGridGUIListener implements MouseListener,MouseMotionListener{
     private JLabel chessPiece;
     private int xAdjustment;
     private int yAdjustment;
+    private int xOld;
+    private int yOld;
     
     public ChessGridGUIListener(ChessGridGUI chessGridGUI, ChessGameControlerModelVue chessGameControler) {
         this.chessGridGUI=chessGridGUI;
@@ -42,16 +44,12 @@ public class ChessGridGUIListener implements MouseListener,MouseMotionListener{
     @Override
     public void mousePressed(MouseEvent e) {
         chessPiece = null;
+        xOld=e.getX();
+        yOld=e.getY();
         Component c =  chessGridGUI.findComponentAt(e.getX(), e.getY());
         Coord coord = chessGridGUI.getSquareCoord(e.getX(),e.getY());
-        Couleur color = chessGridGUI.getSquareColor(coord);
-        if(!chessGameControler.isPlayerOk(color)){
-            return;
-        }
-        else{
-            if (c instanceof JPanel) 
-            return;
-
+        Couleur color = chessGridGUI.getPieceColor(coord);
+        if(chessGameControler.isPlayerOk(color)&& !(c instanceof JPanel)){
             Point parentLocation = c.getParent().getLocation();
             xAdjustment = parentLocation.x - e.getX();
             yAdjustment = parentLocation.y - e.getY();
@@ -68,12 +66,17 @@ public class ChessGridGUIListener implements MouseListener,MouseMotionListener{
         chessPiece.setVisible(false);
         Component c =  chessGridGUI.findComponentAt(e.getX(), e.getY());
 
-        if (c instanceof JLabel){
+        if (c instanceof ChessPieceGUI){
             Container parent = c.getParent();
             parent.remove(0);
             parent.add( chessPiece );
         }
-        else {
+        else if(c instanceof ChessSquareGUI) {
+            Container parent = (Container)c;
+            parent.add(chessPiece);
+        }
+        else{
+            c =  chessGridGUI.findComponentAt(xOld, yOld);
             Container parent = (Container)c;
             parent.add(chessPiece);
         }
@@ -93,8 +96,8 @@ public class ChessGridGUIListener implements MouseListener,MouseMotionListener{
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        if (chessPiece == null) return;
-        chessPiece.setLocation(e.getX() + xAdjustment, e.getY() + yAdjustment);
+        if (chessPiece != null)
+            chessPiece.setLocation(e.getX() + xAdjustment, e.getY() + yAdjustment);
     }
 
     @Override

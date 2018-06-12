@@ -35,6 +35,9 @@ public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
         setPieceChessBoard();
     }
     
+    /**
+     * Remplis l'échiquier de cases blanches et noires
+     */
     private void setBackgroundChessBoard(){
         ChessSquareGUI square = null;
         map = new HashMap<Coord, ChessSquareGUI>();
@@ -55,6 +58,9 @@ public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
         }
     }
     
+    /**
+     * Ajoute les pièces à l'échiquier
+     */
     private void setPieceChessBoard(){
         JPanel square;
         JLabel chessPieceGUI = null;
@@ -77,10 +83,15 @@ public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
         }
     }
     
+    /**
+     * Récupère les coordonnées de la case
+     * @param x
+     * @param y
+     * @return 
+     */
    public Coord getSquareCoord(int x, int y){
        Component c = this.findComponentAt(x,y);
        ChessSquareGUI square;
-       System.out.println(c.getClass());
        if(c.getClass()==ChessPieceGUI.class){
            square = (ChessSquareGUI) c.getParent();
        }
@@ -90,24 +101,32 @@ public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
        return square.getCoord();
    }
    
-   public Couleur getSquareColor(Coord coord){
-       ChessSquareGUI square = (ChessSquareGUI) map.get(coord);
-       ChessPieceGUI piece = (ChessPieceGUI) square.getComponent(0);
-       return piece.getColor();
+   /**
+    * Récupère la couleur de la pièce
+    * @param coord
+    * @return 
+    */
+   public Couleur getPieceColor(Coord coord){
+        ChessSquareGUI square = (ChessSquareGUI) map.get(coord);
+        if(square.getComponents().length!=0){
+            ChessPieceGUI piece = (ChessPieceGUI) square.getComponent(0);
+            return piece.getColor();
+        }
+        return null;
    }
   
     
-    @Override
-    public void addMouseListener(MouseListener mouseListener) {
-        super.addMouseListener(mouseListener);
-        //todo
-    }
-
-    @Override
-    public void addMouseMotionListener(MouseMotionListener mouseMotionListener) {
-        super.addMouseMotionListener(mouseMotionListener);
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    @Override
+//    public void addMouseListener(MouseListener mouseListener) {
+//        super.addMouseListener(mouseListener);
+//        //todo
+//    }
+//
+//    @Override
+//    public void addMouseMotionListener(MouseMotionListener mouseMotionListener) {
+//        super.addMouseMotionListener(mouseMotionListener);
+//        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
     @Override
     public void setPieceToMove(Coord coord) {
