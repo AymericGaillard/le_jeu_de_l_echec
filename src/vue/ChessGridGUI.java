@@ -155,7 +155,14 @@ public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
 
     @Override
     public void undoMovePiece(Coord pieceToMoveInitCoord) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ChessSquareGUI square = (ChessSquareGUI) map.get(pieceToMoveInitCoord);
+        if (square.getComponents().length!=0){
+            square.remove(0);
+            square.add(chessPiece);
+        }
+        else{
+            square.add(chessPiece);
+        }
     }
 
     @Override

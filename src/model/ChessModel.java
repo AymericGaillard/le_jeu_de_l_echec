@@ -47,9 +47,10 @@ public class ChessModel implements ChessGameModel {
     @Override
     public ActionType move(int xInit, int yInit, int xFinal, int yFinal) {
         Pieces pickedPiece = this.chessImplementor.getPiece(xInit, yInit);
-        ActionType rt = pickedPiece.doMove(xFinal, yFinal);
-        System.out.println(this.chessImplementor);
-        return rt;
+        if (pickedPiece.isAlgoMoveOk(xFinal, yFinal)){
+            return pickedPiece.doMove(xFinal, yFinal);
+        }
+        return ActionType.ILLEGAL;
     }
 
     @Override
