@@ -34,8 +34,8 @@ public class ChessImplementor implements ChessGameImplementor {
         this.whitePieces.add(new Tour(7, 0, Couleur.BLANC));
         this.whitePieces.add(new Cavalier(7, 1, Couleur.BLANC));
         this.whitePieces.add(new Fou(7, 2, Couleur.BLANC));
-        this.whitePieces.add(new Reine(7, 3, Couleur.BLANC));
-        this.whitePieces.add(new Roi(7, 4, Couleur.BLANC));
+        this.whitePieces.add(new Roi(7, 3, Couleur.BLANC));
+        this.whitePieces.add(new Reine(7, 4, Couleur.BLANC));
         this.whitePieces.add(new Fou(7, 5, Couleur.BLANC));
         this.whitePieces.add(new Cavalier(7, 6, Couleur.BLANC));
         this.whitePieces.add(new Tour(7, 7, Couleur.BLANC));
