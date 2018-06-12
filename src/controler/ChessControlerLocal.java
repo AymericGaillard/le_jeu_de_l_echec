@@ -7,6 +7,7 @@ package controler;
 
 import javax.swing.JLayeredPane;
 import model.ChessGameModel;
+import tools.data.ActionType;
 import tools.data.Coord;
 import tools.data.Couleur;
 import vue.ChessGridGUI;
@@ -41,12 +42,15 @@ public class ChessControlerLocal implements ChessGameControlerModelVue{
 
     @Override
     public void actionsWhenPieceIsSelectedOnGUI(Coord pieceToMoveCoord, Couleur pieceToMoveCouleur) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        chessGridGUI.setPieceToMove(pieceToMoveCoord);
     }
 
     @Override
     public void actionsWhenPieceIsMovedOnGUI(Coord pieceToMoveCoord, Coord targetCoord) {
-        chessGame.move(pieceToMoveCoord.getX(),pieceToMoveCoord.getY(),targetCoord.getX(),targetCoord.getY());
+        /*if(chessGame.move(pieceToMoveCoord.getX(),pieceToMoveCoord.getY(),targetCoord.getX(),targetCoord.getY())==ActionType.MOVE){;
+            
+        }*/
+        chessGridGUI.movePiece(targetCoord);
     }
     
 }

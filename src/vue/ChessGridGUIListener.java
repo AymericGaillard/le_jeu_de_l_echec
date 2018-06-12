@@ -30,6 +30,7 @@ public class ChessGridGUIListener implements MouseListener,MouseMotionListener{
     private int yAdjustment;
     private int xOld;
     private int yOld;
+    private Coord coord;
     
     public ChessGridGUIListener(ChessGridGUI chessGridGUI, ChessGameControlerModelVue chessGameControler) {
         this.chessGridGUI=chessGridGUI;
@@ -44,11 +45,13 @@ public class ChessGridGUIListener implements MouseListener,MouseMotionListener{
     @Override
     public void mousePressed(MouseEvent e) {
         chessPiece = null;
-        xOld=e.getX();
-        yOld=e.getY();
         Component c =  chessGridGUI.findComponentAt(e.getX(), e.getY());
-        Coord coord = chessGridGUI.getSquareCoord(e.getX(),e.getY());
+        
+        this.coord = chessGridGUI.getSquareCoord(e.getX(),e.getY());
         Couleur color = chessGridGUI.getPieceColor(coord);
+        
+        chessGameControler.actionsWhenPieceIsSelectedOnGUI(coord, color);
+        
         if(chessGameControler.isPlayerOk(color)&& !(c instanceof JPanel)){
             Point parentLocation = c.getParent().getLocation();
             xAdjustment = parentLocation.x - e.getX();
@@ -64,23 +67,11 @@ public class ChessGridGUIListener implements MouseListener,MouseMotionListener{
     public void mouseReleased(MouseEvent e) {
         if(chessPiece == null) return;
         chessPiece.setVisible(false);
-        Component c =  chessGridGUI.findComponentAt(e.getX(), e.getY());
-
-        if (c instanceof ChessPieceGUI){
-            Container parent = c.getParent();
-            parent.remove(0);
-            parent.add( chessPiece );
-        }
-        else if(c instanceof ChessSquareGUI) {
-            Container parent = (Container)c;
-            parent.add(chessPiece);
-        }
-        else{
-            c =  chessGridGUI.findComponentAt(xOld, yOld);
-            Container parent = (Container)c;
-            parent.add(chessPiece);
-        }
-
+        
+        Coord coord = chessGridGUI.getSquareCoord(e.getX(),e.getY());
+        
+        chessGameControler.actionsWhenPieceIsMovedOnGUI(this.coord, coord);
+        
         chessPiece.setVisible(true);
     }
 

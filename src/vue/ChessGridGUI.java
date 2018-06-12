@@ -7,6 +7,7 @@ package vue;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -29,6 +30,7 @@ import tools.factory.ChessImageProvider;
 public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
     private int length=8;
     Map map;
+    private ChessPieceGUI chessPiece;
     public ChessGridGUI() {
         this.setLayout(new GridLayout(length,length));
         setBackgroundChessBoard();
@@ -130,7 +132,8 @@ public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
 
     @Override
     public void setPieceToMove(Coord coord) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ChessSquareGUI square = (ChessSquareGUI) map.get(coord);
+        chessPiece = (ChessPieceGUI) square.getComponent(0);
     }
 
     @Override
@@ -140,7 +143,14 @@ public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
 
     @Override
     public void movePiece(Coord targetCoord) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ChessSquareGUI square = (ChessSquareGUI) map.get(targetCoord);
+        if (square.getComponents().length!=0){
+            square.remove(0);
+            square.add(chessPiece);
+        }
+        else{
+            square.add(chessPiece);
+        }
     }
 
     @Override

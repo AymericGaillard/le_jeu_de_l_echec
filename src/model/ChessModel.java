@@ -33,7 +33,7 @@ public class ChessModel implements ChessGameModel {
 
     @Override
     public Couleur getPieceColor(int x, int y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     @Override
@@ -43,7 +43,6 @@ public class ChessModel implements ChessGameModel {
 
     @Override
     public ActionType move(int xInit, int yInit, int xFinal, int yFinal) {
-        System.out.println("hue");
         return ActionType.MOVE;
     }
 
