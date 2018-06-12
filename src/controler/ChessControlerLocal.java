@@ -47,7 +47,10 @@ public class ChessControlerLocal implements ChessGameControlerModelVue{
 
     @Override
     public void actionsWhenPieceIsMovedOnGUI(Coord pieceToMoveCoord, Coord targetCoord) {
-        if(chessGame.move(pieceToMoveCoord.getX(),pieceToMoveCoord.getY(),targetCoord.getX(),targetCoord.getY())==ActionType.MOVE){;
+        if(targetCoord==null){
+            chessGridGUI.undoMovePiece(pieceToMoveCoord);
+        }
+        else if(chessGame.move(pieceToMoveCoord.getX(),pieceToMoveCoord.getY(),targetCoord.getX(),targetCoord.getY())==ActionType.MOVE){;
             chessGridGUI.movePiece(targetCoord);
         }
         else{
