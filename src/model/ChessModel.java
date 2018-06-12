@@ -5,7 +5,10 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import tools.BoardGameConfig;
 import tools.data.ActionType;
 import tools.data.Coord;
@@ -43,8 +46,8 @@ public class ChessModel implements ChessGameModel {
 
     @Override
     public ActionType move(int xInit, int yInit, int xFinal, int yFinal) {
-        System.out.println("je bouge, tadaaa !");
-        return ActionType.MOVE;
+        Pieces pickedPiece = this.chessImplementor.getPiece(xInit, yInit);
+        return pickedPiece.doMove(xFinal, yFinal);
     }
 
     @Override

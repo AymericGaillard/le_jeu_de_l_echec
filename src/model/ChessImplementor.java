@@ -7,6 +7,8 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import tools.data.Couleur;
 
 /**
@@ -17,6 +19,14 @@ public class ChessImplementor implements ChessGameImplementor {
     
     private List<Pieces> whitePieces;
     private List<Pieces> blackPieces;
+
+    public List<Pieces> getWhitePieces() {
+        return whitePieces;
+    }
+
+    public List<Pieces> getBlackPieces() {
+        return blackPieces;
+    }
     
     public ChessImplementor() {
         this.whitePieces = new ArrayList<Pieces>();
@@ -68,6 +78,30 @@ public class ChessImplementor implements ChessGameImplementor {
         }
         
         return "ChessImplementor{" + "whitePieces=list<Pieces>\n" + whitePiecesString + ", blackPieces=list<Pieces>\n" + blackPiecesString + '}';
+    }
+    
+    public Pieces getPiece(int x, int y) {
+        
+        /* list of all Pieces that are foud to be at (xInit, yInit) */
+        List<Pieces> pickedPieces = new ArrayList<>();
+        
+        Stream<Pieces> sl = (this.getWhitePieces()
+                .stream()
+                .filter(p -> (p.getX()==x && p.getY()==y)));
+        
+        pickedPieces.addAll(sl.collect(Collectors.toList()));
+        
+        sl = (this.getBlackPieces()
+                .stream()
+                .filter(p -> (p.getX()==x && p.getY()==y)));
+        
+        pickedPieces.addAll(sl.collect(Collectors.toList()));
+        
+        if(pickedPieces.size() != 1) {
+            throw new IllegalStateException("No Pieces found.");
+        }
+        
+        return pickedPieces.get(0);
     }
     
 }
