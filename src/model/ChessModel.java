@@ -43,7 +43,7 @@ public class ChessModel implements ChessGameModel {
 
     @Override
     public ActionType move(int xInit, int yInit, int xFinal, int yFinal) {
-        System.out.println("hue");
+        System.out.println("je bouge, tadaaa !");
         return ActionType.MOVE;
     }
 
