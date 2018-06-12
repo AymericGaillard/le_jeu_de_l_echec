@@ -23,6 +23,7 @@ public class ChessModel implements ChessGameModel {
     public ChessModel() {
         //todo
         this.colorCurrentPlayer = BoardGameConfig.getBeginColor();
+        this.chessImplementor = new ChessImplementor();
     }
     
     @Override

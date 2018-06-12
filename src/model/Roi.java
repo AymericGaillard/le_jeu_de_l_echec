@@ -8,6 +8,7 @@ package model;
 import static java.lang.Math.abs;
 import java.util.List;
 import tools.data.Coord;
+import tools.data.Couleur;
 
 /**
  *
@@ -17,6 +18,11 @@ public class Roi extends AbstractPiece {
 
     public Roi() {
         super();
+        this.name = "Roi";
+    }
+    
+    public Roi(int x, int y, Couleur color) {
+        super(x, y, color);
         this.name = "Roi";
     }
 

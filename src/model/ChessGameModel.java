@@ -11,7 +11,7 @@ import tools.data.Couleur;
 /**
  * @author francoise.perrin
  * 
- * Cette interface défini le comportement (métier) attendu 
+ * Cette interface définit le comportement (métier) attendu 
  * des jeux d'échec
  *
  */

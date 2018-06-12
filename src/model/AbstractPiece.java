@@ -24,6 +24,12 @@ public abstract class AbstractPiece implements Pieces {
     public AbstractPiece() {
     }
     
+    public AbstractPiece(int x, int y, Couleur color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+    }
+    
     @Override
     public int getX() {
         if(this.x < 8 && this.x >= -1)
