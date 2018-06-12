@@ -18,6 +18,7 @@ import vue.ChessGridGUI;
 public class ChessControlerLocal implements ChessGameControlerModelVue{
 
     private ChessGameModel chessGame;
+    private ChessGridGUI chessGridGUI;
     
     public ChessControlerLocal(ChessGameModel chessGame) {
         this.chessGame = chessGame;
@@ -25,7 +26,7 @@ public class ChessControlerLocal implements ChessGameControlerModelVue{
 
     @Override
     public void setGridPanel(JLayeredPane panel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.chessGridGUI=(ChessGridGUI) panel;
     }
 
     @Override
@@ -35,7 +36,7 @@ public class ChessControlerLocal implements ChessGameControlerModelVue{
 
     @Override
     public void setGridPanel(ChessGridGUI chessGridGUI) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.chessGridGUI= chessGridGUI;
     }
 
     @Override
@@ -45,7 +46,7 @@ public class ChessControlerLocal implements ChessGameControlerModelVue{
 
     @Override
     public void actionsWhenPieceIsMovedOnGUI(Coord pieceToMoveCoord, Coord targetCoord) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        chessGame.move(pieceToMoveCoord.getX(),pieceToMoveCoord.getY(),targetCoord.getX(),targetCoord.getY());
     }
     
 }

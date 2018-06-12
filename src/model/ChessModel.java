@@ -18,6 +18,7 @@ import tools.data.Couleur;
 public class ChessModel implements ChessGameModel {
 
     private Couleur colorCurrentPlayer;
+    private ChessImplementor chessImplementor;
 
     public ChessModel() {
         //todo
@@ -41,7 +42,8 @@ public class ChessModel implements ChessGameModel {
 
     @Override
     public ActionType move(int xInit, int yInit, int xFinal, int yFinal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("hue");
+        return ActionType.MOVE;
     }
 
     @Override
