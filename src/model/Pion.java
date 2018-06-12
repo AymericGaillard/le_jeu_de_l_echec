@@ -27,11 +27,11 @@ public class Pion extends AbstractPiece {
 
     @Override
     public boolean isAlgoMoveOk(int xFinal, int yFinal) {
-        if (this.color == Couleur.BLANC && (this.x != xFinal + 1 || (this.x == 6 && this.x != xFinal - 2)))
+        if (this.color == Couleur.BLANC && (this.x != xFinal - 1 || (this.x == 6 && this.x != xFinal - 2)))
             return false;
-        if (this.color == Couleur.NOIR && (this.x != yFinal - 1 || (this.x == 1 && this.x != xFinal + 2)))
+        if (this.color == Couleur.NOIR && (this.x != xFinal + 1 || (this.x == 1 && this.x != xFinal + 2)))
             return false;
-        return super.isAlgoMoveOK(xFinal, yFinal);
+        return super.isAlgoMoveOK(xFinal, yFinal) && this.y == yFinal;
     }
 
     @Override
