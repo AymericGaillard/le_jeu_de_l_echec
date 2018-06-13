@@ -44,9 +44,16 @@ public class Fou extends AbstractPiece {
     public List<Coord> getMoveItinerary(int xFinal, int yFinal) {
         List<Coord> path = new ArrayList<>();
         
-        for(int i=1; i<abs(this.x-xFinal); i++) {
-            path.add(new Coord(min(this.x, xFinal)+i, min(this.y, yFinal)+i));
+        if(min(this.x, xFinal)==this.x) {
+            for(int i=1; i<abs(this.x-xFinal); i++) {
+                path.add(new Coord(this.x+i, this.y+i));
+            }
+        } else {
+            for(int i=1; i<abs(this.x-xFinal); i++) {
+                path.add(new Coord(xFinal+i, yFinal+i));
+            }
         }
+        
         
         return path;
     }
