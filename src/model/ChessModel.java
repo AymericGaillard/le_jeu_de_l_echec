@@ -46,7 +46,11 @@ public class ChessModel implements ChessGameModel {
 
     @Override
     public ActionType move(int xInit, int yInit, int xFinal, int yFinal) {
-        return this.chessImplementor.move(xInit, yInit, xFinal, yFinal);
+        ActionType status = this.chessImplementor.move(xInit, yInit, xFinal, yFinal);
+        if (status != ActionType.ILLEGAL) {
+            this.colorCurrentPlayer = this.colorCurrentPlayer == Couleur.BLANC ? Couleur.NOIR : Couleur.BLANC;
+        }
+        return status;
     }
 
     @Override
