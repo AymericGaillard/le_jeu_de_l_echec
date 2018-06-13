@@ -54,7 +54,7 @@ public class ChessModel implements ChessGameModel {
             List<Coord> itinerary = pickedPiece.getMoveItinerary(xFinal, yFinal);
             for(Coord c : itinerary) {
                 if(this.chessImplementor.getPiece(c.getX(), c.getY()) != null)
-                    return ActionType.ILLEGAL; /* some Piece is blocking the move :( */
+                    return ActionType.ILLEGAL; // some Piece is blocking the move :( 
             }
             /* catch */
             if(this.chessImplementor.getPiece(xFinal, yFinal) != null) {
