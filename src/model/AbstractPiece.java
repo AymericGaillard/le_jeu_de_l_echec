@@ -61,8 +61,6 @@ public abstract class AbstractPiece implements Pieces {
     public ActionType doMove(int xFinal, int yFinal) {
         this.x = xFinal;
         this.y = yFinal;
-        System.out.println(this.x);
-        System.out.println(this.y);
         return ActionType.MOVE;
     }
 

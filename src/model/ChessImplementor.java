@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import tools.data.ActionType;
+import tools.data.Coord;
 import tools.data.Couleur;
 
 /**
@@ -102,6 +104,35 @@ public class ChessImplementor implements ChessGameImplementor {
         }
         
         return pickedPieces.get(0);
+    }
+    
+    public ActionType move(int xInit, int yInit, int xFinal, int yFinal) {
+        Pieces pickedPiece = this.getPiece(xInit, yInit);
+        if (pickedPiece == null)
+            return ActionType.ILLEGAL;
+
+        /* get move itinerary and check if squares are empty */
+        List<Coord> itinerary = pickedPiece.getMoveItinerary(xFinal, yFinal);
+        for(Coord c : itinerary) {
+            if(this.getPiece(c.getX(), c.getY()) != null)
+                return ActionType.ILLEGAL; /* some Piece is blocking the move :( */
+        }
+        /* catch */
+        if(this.getPiece(xFinal, yFinal) != null) {
+            Pieces catched = this.getPiece(xFinal, yFinal);
+            if (!pickedPiece.samePlayer(catched) && pickedPiece.isAlgoMoveOk(xFinal, yFinal, ActionType.CATCH)) {
+                catched.catchPiece();
+                pickedPiece.doMove(xFinal, yFinal);
+                return ActionType.CATCH;
+            }
+            return ActionType.ILLEGAL;
+
+        }
+        if (pickedPiece.isAlgoMoveOk(xFinal, yFinal)) {
+            return pickedPiece.doMove(xFinal, yFinal);
+        }
+
+        return ActionType.ILLEGAL;
     }
     
 }

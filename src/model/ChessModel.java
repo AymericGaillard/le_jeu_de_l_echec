@@ -46,29 +46,7 @@ public class ChessModel implements ChessGameModel {
 
     @Override
     public ActionType move(int xInit, int yInit, int xFinal, int yFinal) {
-        Pieces pickedPiece = this.chessImplementor.getPiece(xInit, yInit);
-        if (pickedPiece == null)
-            return ActionType.ILLEGAL;
-        if (pickedPiece.isAlgoMoveOk(xFinal, yFinal)){
-            /* get move itinerary and check if squares are empty */
-            List<Coord> itinerary = pickedPiece.getMoveItinerary(xFinal, yFinal);
-            for(Coord c : itinerary) {
-                if(this.chessImplementor.getPiece(c.getX(), c.getY()) != null)
-                    return ActionType.ILLEGAL; /* some Piece is blocking the move :( */
-            }
-            /* catch */
-            if(this.chessImplementor.getPiece(xFinal, yFinal) != null) {
-                Pieces catched = this.chessImplementor.getPiece(xFinal, yFinal);
-                if (!pickedPiece.samePlayer(catched)) {
-                    catched.catchPiece();
-                    return pickedPiece.doMove(xFinal, yFinal);
-                }
-                return ActionType.ILLEGAL;
-                
-            }
-            return pickedPiece.doMove(xFinal, yFinal);
-        }
-        return ActionType.ILLEGAL;
+        return this.chessImplementor.move(xInit, yInit, xFinal, yFinal);
     }
 
     @Override
