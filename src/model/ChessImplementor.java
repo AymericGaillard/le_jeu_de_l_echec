@@ -34,8 +34,8 @@ public class ChessImplementor implements ChessGameImplementor {
         this.whitePieces.add(new Tour(7, 0, Couleur.BLANC));
         this.whitePieces.add(new Cavalier(7, 1, Couleur.BLANC));
         this.whitePieces.add(new Fou(7, 2, Couleur.BLANC));
-        this.whitePieces.add(new Roi(7, 3, Couleur.BLANC));
-        this.whitePieces.add(new Reine(7, 4, Couleur.BLANC));
+        this.whitePieces.add(new Reine(7, 3, Couleur.BLANC));
+        this.whitePieces.add(new Roi(7, 4, Couleur.BLANC));
         this.whitePieces.add(new Fou(7, 5, Couleur.BLANC));
         this.whitePieces.add(new Cavalier(7, 6, Couleur.BLANC));
         this.whitePieces.add(new Tour(7, 7, Couleur.BLANC));
@@ -50,8 +50,8 @@ public class ChessImplementor implements ChessGameImplementor {
         this.blackPieces.add(new Tour(0, 0, Couleur.NOIR));
         this.blackPieces.add(new Cavalier(0, 1, Couleur.NOIR));
         this.blackPieces.add(new Fou(0, 2, Couleur.NOIR));
-        this.blackPieces.add(new Reine(0, 3, Couleur.NOIR));
-        this.blackPieces.add(new Roi(0, 4, Couleur.NOIR));
+        this.blackPieces.add(new Roi(0, 3, Couleur.NOIR));
+        this.blackPieces.add(new Reine(0, 4, Couleur.NOIR));
         this.blackPieces.add(new Fou(0, 5, Couleur.NOIR));
         this.blackPieces.add(new Cavalier(0, 6, Couleur.NOIR));
         this.blackPieces.add(new Tour(1, 7, Couleur.NOIR));
@@ -98,7 +98,7 @@ public class ChessImplementor implements ChessGameImplementor {
         pickedPieces.addAll(sl.collect(Collectors.toList()));
         
         if(pickedPieces.size() != 1) {
-            throw new IllegalStateException("No Pieces found.");
+            return null;
         }
         
         return pickedPieces.get(0);

@@ -6,7 +6,9 @@
 package model;
 
 import static java.lang.Math.abs;
+import java.util.ArrayList;
 import java.util.List;
+import tools.data.ActionType;
 import tools.data.Coord;
 import tools.data.Couleur;
 
@@ -32,10 +34,15 @@ public class Cavalier extends AbstractPiece {
         boolean vertical = (abs(this.x-xFinal) == 2 && abs(this.y-yFinal) == 1);
         return super.isAlgoMoveOK(xFinal, yFinal) && (horizontal || vertical);
     }
+    
+    @Override
+    public boolean isAlgoMoveOk(int xFinal, int yFinal, ActionType type) {
+        return this.isAlgoMoveOK(xFinal, yFinal);
+    }
 
     @Override
     public List<Coord> getMoveItinerary(int xFinal, int yFinal) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        return new ArrayList<>();
     }
     
 }

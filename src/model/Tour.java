@@ -5,7 +5,12 @@
  */
 package model;
 
+import static java.lang.Math.abs;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+import java.util.ArrayList;
 import java.util.List;
+import tools.data.ActionType;
 import tools.data.Coord;
 import tools.data.Couleur;
 
@@ -31,10 +36,28 @@ public class Tour extends AbstractPiece {
         boolean vertical = (this.y == yFinal && this.x != xFinal);
         return super.isAlgoMoveOK(xFinal, yFinal) && (horizontal || vertical);
     }
+    
+    @Override
+    public boolean isAlgoMoveOk(int xFinal, int yFinal, ActionType type) {
+        return this.isAlgoMoveOK(xFinal, yFinal);
+    }
 
     @Override
     public List<Coord> getMoveItinerary(int xFinal, int yFinal) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        List<Coord> path = new ArrayList<>();
+        
+        if(this.y == yFinal) {
+            for(int i=min(this.x, xFinal)+1; i<max(this.x, xFinal); i++) {
+                path.add(new Coord(i, this.y));
+            }
+        }
+        if(this.x == xFinal) {
+            for(int i=min(this.y, yFinal)+1; i<max(this.y, yFinal); i++) {
+                path.add(new Coord(this.x, i));
+            }
+        }
+        
+        return path;
     }
     
 }
