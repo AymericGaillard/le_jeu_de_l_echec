@@ -47,10 +47,10 @@ public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
         for (int i = 0; i<length; i++){
             for (int j = 0; j<length; j++) {
 		if((j%2==0 && i%2==0) || (j%2!=0 && i%2!=0)){
-                    square = new ChessSquareGUI(new Color(139,69,0), new Coord(i,j));
+                    square = new ChessSquareGUI(new Color(255,250,240), new Coord(i,j));
 		}
 		else{
-                    square = new ChessSquareGUI(new Color(255,250,240), new Coord(i,j));
+                    square = new ChessSquareGUI(new Color(139,69,0), new Coord(i,j));
 		}
 
 		// ajout du carre sur le damier
@@ -119,24 +119,13 @@ public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
         }
         return null;
    }
-  
-    
-//    @Override
-//    public void addMouseListener(MouseListener mouseListener) {
-//        super.addMouseListener(mouseListener);
-//        //todo
-//    }
-//
-//    @Override
-//    public void addMouseMotionListener(MouseMotionListener mouseMotionListener) {
-//        super.addMouseMotionListener(mouseMotionListener);
-//        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
 
     @Override
     public void setPieceToMove(Coord coord) {
         ChessSquareGUI square = (ChessSquareGUI) map.get(coord);
-        chessPiece = (ChessPieceGUI) square.getComponent(0);
+        if(square.getComponents().length!=0){
+            chessPiece = (ChessPieceGUI) square.getComponent(0);
+        }
     }
 
     @Override

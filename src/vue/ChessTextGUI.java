@@ -15,16 +15,15 @@ import java.awt.TextArea;
 public class ChessTextGUI extends TextArea {
 
     public ChessTextGUI() {
+        
     }
 
     public ChessTextGUI(int hgap, int vgap) {
         super(hgap, vgap);
     }
     
-    
-    
-    public void appendText(String string) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void append(String string) {
+        super.append(string);
     }
     
 }

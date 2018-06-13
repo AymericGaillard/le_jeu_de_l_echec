@@ -94,7 +94,7 @@ public class ChessModelObs extends Observable implements ChessGameModel {
 	}
 
 	@Override
-	public void	notifyObservers(Object arg) {
+	public void notifyObservers(Object arg) {
 		super.setChanged();
 		super.notifyObservers(arg); 
 	}

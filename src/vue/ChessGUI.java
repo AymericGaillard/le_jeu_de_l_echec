@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 
 import tools.data.MessageModelToGUI;
 import controler.ChessGameControlerModelVue;
+import tools.data.ActionType;
 
 /**
  * 
@@ -125,9 +126,9 @@ public class ChessGUI extends JFrame implements Observer {
 	 */
 	@Override
 	public void update(Observable arg0, Object arg1) {
-
 		MessageModelToGUI message = (MessageModelToGUI) arg1;
-		execTrace.appendText(message + "\n");
-
+                if(message.getActionType()==ActionType.MOVE){
+                    execTrace.append(message + "\n");
+                }
 	}
 }
