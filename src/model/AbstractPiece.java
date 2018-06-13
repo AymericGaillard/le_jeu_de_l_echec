@@ -80,7 +80,7 @@ public abstract class AbstractPiece implements Pieces {
     
     @Override
     public boolean isAlgoMoveOk(int xFinal, int yFinal, ActionType type) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        return (this.x>=0 && this.x<8 && this.y>=0 && this.y<8 && xFinal>=0 && xFinal<8 && yFinal>=0 && yFinal<8);
     }
 
     @Override

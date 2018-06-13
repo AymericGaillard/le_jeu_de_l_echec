@@ -6,7 +6,10 @@
 package model;
 
 import static java.lang.Math.abs;
+import static java.lang.Math.min;
+import java.util.ArrayList;
 import java.util.List;
+import tools.data.ActionType;
 import tools.data.Coord;
 import tools.data.Couleur;
 
@@ -30,10 +33,21 @@ public class Fou extends AbstractPiece {
     public boolean isAlgoMoveOk(int xFinal, int yFinal) {
         return super.isAlgoMoveOK(xFinal, yFinal) && (abs(this.y - yFinal) == abs(this.x - xFinal));
     }
+    
+    @Override
+    public boolean isAlgoMoveOk(int xFinal, int yFinal, ActionType type) {
+        return this.isAlgoMoveOK(xFinal, yFinal);
+    }
 
     @Override
     public List<Coord> getMoveItinerary(int xFinal, int yFinal) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        List<Coord> path = new ArrayList<>();
+        
+        for(int i=1; i<abs(this.x-xFinal); i++) {
+            path.add(new Coord(min(this.x, xFinal)+i, min(this.y, yFinal)+i));
+        }
+        
+        return path;
     }
     
 }
