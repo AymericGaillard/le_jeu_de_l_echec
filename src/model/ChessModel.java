@@ -51,18 +51,14 @@ public class ChessModel implements ChessGameModel {
             return ActionType.ILLEGAL;
         System.out.println("is picked");
         if (pickedPiece.isAlgoMoveOk(xFinal, yFinal)){
-            System.out.println("isAlgoMove100%OK");
             /* get move itinerary and check if squares are empty */
             List<Coord> itinerary = pickedPiece.getMoveItinerary(xFinal, yFinal);
             for(Coord c : itinerary) {
-                System.out.println(c.getX());
-                System.out.println(c.getY());
                 if(this.chessImplementor.getPiece(c.getX(), c.getY()) != null)
                     return ActionType.ILLEGAL; /* some Piece is blocking the move :( */
             }
-            /* @TODO : prise */
+            /* catch */
             if(this.chessImplementor.getPiece(xFinal, yFinal) != null) {
-                System.out.println("catch");
                 this.chessImplementor.getPiece(xFinal, yFinal).catchPiece();
                 return pickedPiece.doMove(xFinal, yFinal);
             }
