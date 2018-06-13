@@ -135,4 +135,8 @@ public class ChessImplementor implements ChessGameImplementor {
         return ActionType.ILLEGAL;
     }
     
+    public Couleur getCouleur(int x, int y) {
+        return this.getPiece(x,y).getCouleur();
+    }
+    
 }

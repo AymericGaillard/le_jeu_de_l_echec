@@ -36,7 +36,7 @@ public class ChessModel implements ChessGameModel {
 
     @Override
     public Couleur getPieceColor(int x, int y) {
-        return this.chessImplementor.getPiece(x,y).getCouleur();
+        return this.chessImplementor.getCouleur(x,y);
     }
 
     @Override
