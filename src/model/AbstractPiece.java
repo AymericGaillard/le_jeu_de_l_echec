@@ -61,6 +61,8 @@ public abstract class AbstractPiece implements Pieces {
     public ActionType doMove(int xFinal, int yFinal) {
         this.x = xFinal;
         this.y = yFinal;
+        System.out.println(this.x);
+        System.out.println(this.y);
         return ActionType.MOVE;
     }
 
@@ -91,6 +93,12 @@ public abstract class AbstractPiece implements Pieces {
     @Override
     public boolean undoLastCatch() {
         throw new UnsupportedOperationException("Not supported yet."); //need historic
+    }
+
+    @Override
+    public boolean samePlayer(Pieces p) {
+        AbstractPiece ap = (AbstractPiece) p;
+        return this.color == ap.color;
     }
 
     @Override

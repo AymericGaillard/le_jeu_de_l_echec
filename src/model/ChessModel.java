@@ -49,7 +49,6 @@ public class ChessModel implements ChessGameModel {
         Pieces pickedPiece = this.chessImplementor.getPiece(xInit, yInit);
         if (pickedPiece == null)
             return ActionType.ILLEGAL;
-        System.out.println("is picked");
         if (pickedPiece.isAlgoMoveOk(xFinal, yFinal)){
             /* get move itinerary and check if squares are empty */
             List<Coord> itinerary = pickedPiece.getMoveItinerary(xFinal, yFinal);
@@ -59,8 +58,12 @@ public class ChessModel implements ChessGameModel {
             }
             /* catch */
             if(this.chessImplementor.getPiece(xFinal, yFinal) != null) {
-                this.chessImplementor.getPiece(xFinal, yFinal).catchPiece();
-                return pickedPiece.doMove(xFinal, yFinal);
+                Pieces catched = this.chessImplementor.getPiece(xFinal, yFinal);
+                if (pickedPiece.samePlayer(catched)) {
+                    catched.catchPiece();
+                    return pickedPiece.doMove(xFinal, yFinal);
+                }
+                
             }
             return pickedPiece.doMove(xFinal, yFinal);
         }

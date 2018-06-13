@@ -84,5 +84,11 @@ public interface Pieces {
 	 * initiales de la pièce au moment de sa capture).
 	 */
 	public boolean undoLastCatch();
+
+	/**
+	 * @param p
+	 * @return true si les deux Pieces sont au même joueur, false sinon
+	 */
+	public boolean samePlayer(Pieces p);
 };
 
