@@ -47,7 +47,15 @@ public class ChessModel implements ChessGameModel {
     @Override
     public ActionType move(int xInit, int yInit, int xFinal, int yFinal) {
         Pieces pickedPiece = this.chessImplementor.getPiece(xInit, yInit);
+        if (pickedPiece == null)
+            return ActionType.ILLEGAL;
         if (pickedPiece.isAlgoMoveOk(xFinal, yFinal)){
+            /* get move itinerary and check if squares are empty */
+            List<Coord> itinerary = pickedPiece.getMoveItinerary(xFinal, yFinal);
+            for(Coord c : itinerary) {
+                if(this.chessImplementor.getPiece(c.getX(), c.getY()) != null)
+                    return ActionType.ILLEGAL; /* some Piece is blocking the move :( */
+            }
             /* @TODO : prise */
             return pickedPiece.doMove(xFinal, yFinal);
         }
