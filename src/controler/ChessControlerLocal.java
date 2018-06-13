@@ -46,7 +46,7 @@ public class ChessControlerLocal implements ChessGameControlerModelVue{
         if(targetCoord==null){
             chessGridGUI.undoMovePiece(pieceToMoveCoord);
         }
-        else if(chessGame.move(pieceToMoveCoord.getX(),pieceToMoveCoord.getY(),targetCoord.getX(),targetCoord.getY())==ActionType.MOVE){;
+        else if(chessGame.move(pieceToMoveCoord.getX(),pieceToMoveCoord.getY(),targetCoord.getX(),targetCoord.getY())!=ActionType.ILLEGAL){;
             chessGridGUI.movePiece(targetCoord);
         }
         else{
