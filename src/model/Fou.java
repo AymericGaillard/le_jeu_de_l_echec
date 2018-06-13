@@ -45,17 +45,16 @@ public class Fou extends AbstractPiece {
         List<Coord> path = new ArrayList<>();
         
         int j = this.y > yFinal ? 1 : -1;
-        
+
         if(this.x < xFinal) {
-            for(int i=1; i<abs(this.x-xFinal); i++) {
-                path.add(new Coord(this.x+i, this.y+j));
+            for(int i=1; i<xFinal-this.x; i++) {
+                path.add(new Coord(this.x+i, this.y-(j*i)));
             }
         } else {
-            for(int i=1; i<abs(this.x-xFinal); i++) {
-                path.add(new Coord(xFinal+i, yFinal+j));
+            for(int i=1; i<this.x-xFinal; i++) {
+                path.add(new Coord(xFinal+i, yFinal+(j*i)));
             }
-        }
-        
+        }        
         
         return path;
     }
