@@ -59,10 +59,11 @@ public class ChessModel implements ChessGameModel {
             /* catch */
             if(this.chessImplementor.getPiece(xFinal, yFinal) != null) {
                 Pieces catched = this.chessImplementor.getPiece(xFinal, yFinal);
-                if (pickedPiece.samePlayer(catched)) {
+                if (!pickedPiece.samePlayer(catched)) {
                     catched.catchPiece();
                     return pickedPiece.doMove(xFinal, yFinal);
                 }
+                return ActionType.ILLEGAL;
                 
             }
             return pickedPiece.doMove(xFinal, yFinal);
