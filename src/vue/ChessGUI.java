@@ -127,7 +127,7 @@ public class ChessGUI extends JFrame implements Observer {
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		MessageModelToGUI message = (MessageModelToGUI) arg1;
-                if(message.getActionType()==ActionType.MOVE){
+                if(message.getActionType()==ActionType.MOVE || message.getActionType()==ActionType.CATCH){
                     execTrace.append(message + "\n");
                 }
 	}

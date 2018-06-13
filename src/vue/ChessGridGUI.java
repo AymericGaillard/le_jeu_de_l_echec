@@ -119,7 +119,11 @@ public class ChessGridGUI extends JLayeredPane implements ChessGameGUI {
         }
         return null;
    }
-
+   
+   /**
+    * Récupère la pièce 
+    * @param coord 
+    */
     @Override
     public void setPieceToMove(Coord coord) {
         ChessSquareGUI square = (ChessSquareGUI) map.get(coord);

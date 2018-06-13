@@ -10,6 +10,7 @@ import model.ChessGameModel;
 import tools.data.ActionType;
 import tools.data.Coord;
 import tools.data.Couleur;
+import vue.ChessGameGUI;
 import vue.ChessGridGUI;
 
 /**
@@ -19,15 +20,10 @@ import vue.ChessGridGUI;
 public class ChessControlerLocal implements ChessGameControlerModelVue{
 
     private ChessGameModel chessGame;
-    private ChessGridGUI chessGridGUI;
+    private ChessGameGUI chessGridGUI;
     
     public ChessControlerLocal(ChessGameModel chessGame) {
         this.chessGame = chessGame;
-    }
-
-    @Override
-    public void setGridPanel(JLayeredPane panel) {
-        this.chessGridGUI=(ChessGridGUI) panel;
     }
 
     @Override
@@ -36,8 +32,8 @@ public class ChessControlerLocal implements ChessGameControlerModelVue{
     }
 
     @Override
-    public void setGridPanel(ChessGridGUI chessGridGUI) {
-        this.chessGridGUI= chessGridGUI;
+    public void setGridPanel(ChessGameGUI chessGameGUI) {
+        this.chessGridGUI= chessGameGUI;
     }
 
     @Override
