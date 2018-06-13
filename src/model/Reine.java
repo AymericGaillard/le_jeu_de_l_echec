@@ -56,25 +56,22 @@ public class Reine extends AbstractPiece {
                 path.add(new Coord(this.x, i));
             }
         } else {
-            if(min(this.x, xFinal)==this.x) {
-                for(int i=1; i<abs(this.x-xFinal); i++) {
-                    path.add(new Coord(this.x+i, this.y+i));
+            
+            int j = this.y > yFinal ? 1 : -1;
+
+            if(this.x < xFinal) {
+                for(int i=1; i<xFinal-this.x; i++) {
+                    path.add(new Coord(this.x+i, this.y-(j*i)));
                 }
             } else {
-                int j = this.y > yFinal ? 1 : -1;
-        
-                if(this.x < xFinal) {
-                    for(int i=1; i<abs(this.x-xFinal); i++) {
-                        path.add(new Coord(this.x+i, this.y+j));
-                    }
-                } else {
-                    for(int i=1; i<abs(this.x-xFinal); i++) {
-                        path.add(new Coord(xFinal+i, yFinal+j));
-                    }
+                for(int i=1; i<this.x-xFinal; i++) {
+                    path.add(new Coord(xFinal+i, yFinal+(j*i)));
                 }
             }
+            
         }
-        
+        for(Coord c : path)
+            System.out.println(c);
         return path;
     }
     
