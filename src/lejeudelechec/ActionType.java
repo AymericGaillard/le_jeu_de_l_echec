@@ -12,7 +12,7 @@ public enum  ActionType implements Serializable{
 	/** coup normal de dÃ©placement (sans prise) */
 	MOVE,
 	/** coup normal de prise */
-	TAKE,
+	CATCH,
 	// ------------------------------------------------------- coup spÃ©ciaux
 	/** mouvement de roque (tentative) */
 	ROQUE, 

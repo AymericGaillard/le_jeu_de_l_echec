@@ -47,7 +47,8 @@ public class Pion extends AbstractPiece {
         List<Coord> path = new ArrayList<>();
         
         if(this.y == yFinal && abs(this.x - xFinal) == 2) { /* on avance de 2 cases */
-            path.add(new Coord(this.x + 1, y));
+            int tmp = this.color == Couleur.BLANC ? this.x - 1 : this.x + 1;
+            path.add(new Coord(tmp, y));
         }
         
         return path;
